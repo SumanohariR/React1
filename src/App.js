@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import './index.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import MenuComponents from "./components/MenuComponents"
+import Navbar from "./components/Navbar"
+import dishes from "./components/data"
+import logo from './logo.svg';
 
-function App() {
+export default function App() {
+  const menu=dishes.map(item=>{return(
+    <MenuComponents key={item.id}
+    image={item.image}
+    name={item.name}
+    description={item.description}
+    />)}
+
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      {menu}
     </div>
   );
 }
-
-export default App;
